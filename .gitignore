@@ -1,0 +1,9 @@
+# OS and editor files
+.DS_Store
+.idea/
+.vscode/
+
+# Go build and test output (projects may add their own .gitignore)
+bin/
+coverage.out
+*.test

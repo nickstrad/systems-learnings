@@ -55,7 +55,6 @@ Paper 1 grew past the minimal experiment into a small sharded system:
 
 Still to do for this paper:
 - benchmarks against modulo hashing and a classic hash ring
-- property and fuzz tests
 - the blog post
 
 See [`jumphash/README.md`](jumphash/README.md).
