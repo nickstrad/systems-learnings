@@ -1,7 +1,11 @@
 # systems-learnings
 
-Working through seminal papers in distributed systems and systems
-programming. For each paper:
+A Go repository of systems projects exploring the ten papers in
+[`docs/papers/`](docs/papers/), covering storage, concurrency, and
+distributed systems. Each project turns a paper's ideas into working Go
+code, tests, and experiments.
+
+For each paper:
 
 1. Read it. The papers are in [`docs/papers/`](docs/papers/).
 2. Implement the idea in Go, small and readable, with tests that check the
