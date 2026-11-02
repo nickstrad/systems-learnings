@@ -63,6 +63,69 @@ Still to do for this paper:
 
 See [`jumphash/README.md`](jumphash/README.md).
 
+## Run the projects
+
+### Jump Consistent Hash: `jumphash`
+
+Requires Go 1.26.4 or later and `make`, with ports 8081–8084 available
+for the demo (8081–8082 for the manual walkthrough).
+
+From the repository root, run the scripted walkthrough. It starts four
+nodes, writes keys, adds and removes nodes, reports how many keys move,
+and stops the nodes when it finishes:
+
+```sh
+cd jumphash
+make demo
+```
+
+To interact with the cluster yourself, build the CLI and node server:
+
+```sh
+cd jumphash  # from the repository root
+make build
+```
+
+In two separate terminals, each in `jumphash/`, start one node:
+
+```sh
+# Terminal 1
+bin/kvnode -addr 127.0.0.1:8081
+```
+
+```sh
+# Terminal 2
+bin/kvnode -addr 127.0.0.1:8082
+```
+
+In a third terminal in `jumphash/`, use `kvctl` to write and read values,
+find their owner, and watch data move as membership changes:
+
+```sh
+bin/kvctl add-node localhost:8081
+bin/kvctl fill 1000
+bin/kvctl put user:42 hello
+bin/kvctl get user:42                 # hello
+bin/kvctl where user:42               # the node that owns this key
+bin/kvctl add-node localhost:8082     # moves about half the keys
+bin/kvctl nodes
+bin/kvctl stats
+bin/kvctl remove-node localhost:8081  # moves its keys to the remaining node
+bin/kvctl get user:42                 # still hello
+bin/kvctl del user:42
+```
+
+Use `bin/kvctl -h` for all commands; global flags such as `-v` go before
+the command. The CLI stores membership in `cluster.json` and logs in
+`kvctl.log` in the current directory. All commands for a cluster must use
+the same membership file (`-cluster <path>` overrides the default).
+Nodes hold data in memory, so stopping them loses their keys. Stop each
+node with Ctrl-C and use a fresh membership file for a new walkthrough.
+
+Run `make test` for unit tests or `make e2e` for tests against real node
+processes. See the [project README](jumphash/README.md) for the HTTP API
+and implementation details.
+
 ## Layout
 
 ```
