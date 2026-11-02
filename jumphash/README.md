@@ -246,7 +246,8 @@ go test -run='^$' -fuzz=FuzzClusterModel -fuzztime=60s ./internal/cluster
 |--------|---------|----------|
 | `FuzzClusterModel` | `internal/cluster` | A script of add/remove/put/delete and injected faults (down nodes, failing deletes, puts failing part-way through a copy phase) runs against the real `Cluster` and a map-plus-set model. Reads always match the model: no lost writes, stale reads, or resurrected deletes |
 | `FuzzPlanMoves` | `internal/cluster` | Applying a plan changes no read before or at the commit, and leaves each live key only on its new owner |
-| `FuzzRingOps` | root | Ring invariant, minimal movement on every add and remove, and remove then re-add restores the mapping |
+| `FuzzHash` | root | For any key and bucket counts: result in range (or -1), and growing from n to m buckets never moves a key between two old buckets |
+| `FuzzRingOps` | root | Ring invariant, minimal movement on every add and remove, remove then re-add restores the mapping, and a ring with no holes agrees with plain `Hash`, over fuzzer-chosen sample keys |
 | `FuzzKVHTTPRoundTrip` | `internal/kvhttp` | Any key and value survive put, get, list, and delete over real HTTP |
 | `FuzzMemberfileLoad` | `internal/memberfile` | Any file loads as a valid membership or a well-formed error, and save then load round-trips |
 
