@@ -38,5 +38,14 @@ template.
   parentheses, and order files from the domain outward to the real
   binaries.
 
+## Root Makefile
+
+The root Makefile discovers projects from top-level `go.mod` files.
+Give each project a Makefile with `check`, `e2e`, and `demo` targets:
+`check` runs its standard checks and tests, `e2e` runs its end-to-end
+suite, and `demo` runs its walkthrough and cleans up any processes it
+starts. Keep `make test-<project>` and `make demo-<project>` working as
+projects are added, and document them in the root README.
+
 `AGENTS.md` is the source of these instructions. `CLAUDE.md` is a relative
 symlink to it; preserve the symlink and edit this file to change the rules.

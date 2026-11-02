@@ -65,6 +65,19 @@ See [`jumphash/README.md`](jumphash/README.md).
 
 ## Run the projects
 
+Use the root Makefile to run every project or choose one:
+
+```sh
+make test           # all project test suites: check + e2e
+make test-jumphash  # jumphash only: vet, formatting, race, noassert, and e2e
+make demo           # all project demos, one at a time
+make demo-jumphash  # jumphash's scripted walkthrough
+make help           # available commands and discovered projects
+```
+
+Projects are discovered from top-level directories containing `go.mod`.
+Each project's Makefile provides `check`, `e2e`, and `demo` targets.
+
 ### Jump Consistent Hash: `jumphash`
 
 Requires Go 1.26.4 or later and `make`, with ports 8081–8084 available
@@ -75,8 +88,7 @@ nodes, writes keys, adds and removes nodes, reports how many keys move,
 and stops the nodes when it finishes:
 
 ```sh
-cd jumphash
-make demo
+make demo-jumphash
 ```
 
 To interact with the cluster yourself, build the CLI and node server:
@@ -131,6 +143,7 @@ and implementation details.
 ```
 systems-learnings/
 ├── README.md          this file
+├── Makefile           run all projects' test suites and demos, or select one
 ├── docs/
 │   ├── coding.md      how projects are written: domain vs integration, contracts, errors, logging, concurrency
 │   ├── testing.md     how projects are tested: specification-based, structural, property/fuzz, integration, e2e
