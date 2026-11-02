@@ -2,6 +2,7 @@
 
 A learning project, not production code. It follows the repo-wide
 [coding](../docs/coding.md) and [testing](../docs/testing.md) approach.
+[`TESTS.md`](TESTS.md) lists every test file by category.
 
 ## Layout: domain vs integration
 

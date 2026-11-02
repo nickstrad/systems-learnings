@@ -4,7 +4,7 @@ How projects in this repo are tested, using the definitions from Aniche's
 *Effective Software Testing* (research notes:
 `~/AI/writeups/aniche_effective_software_testing.md`). `jumphash/` is the
 worked example.
-[`test-catalog.md`](test-catalog.md) lists every test file by category.
+Each project's `TESTS.md` (for example [`jumphash/TESTS.md`](../jumphash/TESTS.md)) lists its test files by category.
 
 The techniques build on each other:
 1. Derive tests from the spec.

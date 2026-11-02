@@ -1,19 +1,16 @@
-# Test catalog
+# jumphash tests
 
-Every test file in the repo, grouped by the categories in
-[`testing.md`](testing.md). A file that fits more than one category is
-listed under its main purpose, with its other roles in parentheses.
-Within each project, files are listed in a suggested reading order: the
-domain first, then outward to the real binaries.
+Every test file in this project, grouped by the categories in the repo's
+[testing approach](../docs/testing.md). A file that fits more than one
+category is listed under its main purpose, with its other roles in
+parentheses. Files are listed in a suggested reading order: the domain
+first, then outward to the real binaries. Paths are relative to this
+directory.
 
 Keep this file current: add, move, or remove entries in the same change
 that adds, renames, deletes, or repurposes a test file.
 
-## jumphash
-
-Paths are relative to [`jumphash/`](../jumphash/).
-
-### 1. Specification-based unit tests (domain logic, no I/O)
+## 1. Specification-based unit tests (domain logic, no I/O)
 
 | File | What it covers |
 |------|----------------|
@@ -23,7 +20,7 @@ Paths are relative to [`jumphash/`](../jumphash/).
 | `internal/assert/assert_test.go` | The assertion helper itself |
 | `internal/cluster/cluster_test.go` | Cluster rules over in-memory fakes: key movement, validation, empty key, dead source, empty cluster, plan purity |
 
-### 2. Failure-path and regression unit tests (fakes inject faults)
+## 2. Failure-path and regression unit tests (fakes inject faults)
 
 | File | What it covers |
 |------|----------------|
@@ -31,14 +28,14 @@ Paths are relative to [`jumphash/`](../jumphash/).
 | `internal/cluster/stale_test.go` | Stale-copy regressions: an older copy never overwrites a newer value, and deleted keys stay deleted |
 | `internal/cluster/errors_test.go` | Every public error is a well-formed cluster error; panics are never hidden behind an error |
 
-### 3. Structural tests: proving the assertions can fail
+## 3. Structural tests: proving the assertions can fail
 
 | File | What it covers |
 |------|----------------|
 | `internal/cluster/contract_test.go` | Broken stubs show that each interface pre/postcondition assertion trips |
 | `internal/cluster/export_test.go` | Helper, not a test: exposes internal checked wrappers to the tests above |
 
-### 4. Contract tests (one suite, every implementation)
+## 4. Contract tests (one suite, every implementation)
 
 | File | What it covers |
 |------|----------------|
@@ -46,7 +43,7 @@ Paths are relative to [`jumphash/`](../jumphash/).
 | `internal/cluster/clustertest/contract.go` | The shared `NodeContract` and `StoreContract` suites |
 | `internal/cluster/clustertest/clustertest_test.go` | Runs the contracts against the fakes. The real adapters run them in `kvhttp_test.go` and `memberfile_test.go` |
 
-### 5. Property-based / fuzz tests
+## 5. Property-based / fuzz tests
 
 | File | Kind of property |
 |------|------------------|
@@ -58,7 +55,7 @@ Paths are relative to [`jumphash/`](../jumphash/).
 | `internal/kvhttp/kvhttp_fuzz_test.go` | `FuzzKVHTTPRoundTrip`: put, get, list, delete round trip over real HTTP, mostly testing key escaping |
 | `internal/memberfile/memberfile_fuzz_test.go` | `FuzzMemberfileLoad`: arbitrary bytes never cause a panic, and save then load round-trips |
 
-### 6. Integration tests (one adapter against real infrastructure)
+## 6. Integration tests (one adapter against real infrastructure)
 
 | File | What it covers |
 |------|----------------|
@@ -67,7 +64,7 @@ Paths are relative to [`jumphash/`](../jumphash/).
 | `internal/memberfile/memberfile_test.go` | File store in a temp dir (also runs the Store contract): format, corrupt files, bad history, unusable paths |
 | `cmd/kvctl/main_test.go` | The CLI's `realMain`: exit codes, messages with log IDs, bugs and panics reported as bugs, argument errors |
 
-### 7. System / e2e tests (real binaries, `-tags e2e`)
+## 7. System / e2e tests (real binaries, `-tags e2e`)
 
 | File | What it covers |
 |------|----------------|

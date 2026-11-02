@@ -22,14 +22,21 @@ When a paper project becomes runnable or is completed, update the root
 When a project's commands, flags, setup, or behavior change, update its
 existing usage section even if the paper project is still in progress.
 
-## Keep the test catalog current
+## Keep each project's TESTS.md current
 
-`docs/test-catalog.md` lists every test file, grouped by the testing
-categories in `docs/testing.md`. When you add, rename, delete, or change
-the purpose of a test file (including fuzz targets, fakes, contract
-suites, and saved fuzz corpora), update the catalog in the same change.
-Put each file under its main category, note other roles in parentheses,
-and add a section when a new project gets tests.
+Every project has a `TESTS.md` at its root (for example
+`jumphash/TESTS.md`) that lists all of its test files, grouped by the
+testing categories in `docs/testing.md`. Use `jumphash/TESTS.md` as the
+template.
+
+- When a project gets its first test, create its `TESTS.md` and link it
+  from the project's README.
+- When you add, rename, delete, or change the purpose of a test file
+  (including fuzz targets, fakes, contract suites, and saved fuzz
+  corpora), update that project's `TESTS.md` in the same change.
+- Put each file under its main category, note other roles in
+  parentheses, and order files from the domain outward to the real
+  binaries.
 
 `AGENTS.md` is the source of these instructions. `CLAUDE.md` is a relative
 symlink to it; preserve the symlink and edit this file to change the rules.
