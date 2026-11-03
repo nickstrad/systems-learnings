@@ -7,7 +7,7 @@ import (
 	"slices"
 
 	"github.com/nickstrad/systems-learnings/jumphash"
-	"github.com/nickstrad/systems-learnings/jumphash/internal/assert"
+	"github.com/nickstrad/systems-learnings/shared/assert"
 )
 
 // Op is one membership change.

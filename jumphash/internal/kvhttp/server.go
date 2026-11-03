@@ -12,8 +12,8 @@ import (
 
 	"github.com/go-chi/chi/v5"
 
-	"github.com/nickstrad/systems-learnings/jumphash/internal/assert"
 	"github.com/nickstrad/systems-learnings/jumphash/internal/kv"
+	"github.com/nickstrad/systems-learnings/shared/assert"
 )
 
 // MaxValueBytes is the largest value a PUT may carry (1 MiB). A bigger body

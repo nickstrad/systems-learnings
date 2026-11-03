@@ -6,7 +6,7 @@
 // to the new bucket n.
 package jumphash
 
-import "github.com/nickstrad/systems-learnings/jumphash/internal/assert"
+import "github.com/nickstrad/systems-learnings/shared/assert"
 
 // Hash maps key to a bucket in [0, numBuckets). It returns -1 if numBuckets <= 0.
 //

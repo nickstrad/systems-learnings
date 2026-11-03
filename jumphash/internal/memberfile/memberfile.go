@@ -7,9 +7,9 @@ import (
 	"errors"
 	"os"
 
-	"github.com/nickstrad/systems-learnings/jumphash/internal/assert"
 	"github.com/nickstrad/systems-learnings/jumphash/internal/cluster"
-	"github.com/nickstrad/systems-learnings/jumphash/internal/errs"
+	"github.com/nickstrad/systems-learnings/shared/assert"
+	"github.com/nickstrad/systems-learnings/shared/errs"
 )
 
 // File is a membership file on disk. A missing file means an empty cluster.

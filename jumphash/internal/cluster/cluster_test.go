@@ -7,9 +7,9 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/nickstrad/systems-learnings/jumphash/internal/assert"
 	"github.com/nickstrad/systems-learnings/jumphash/internal/cluster"
 	"github.com/nickstrad/systems-learnings/jumphash/internal/cluster/clustertest"
+	"github.com/nickstrad/systems-learnings/shared/assert"
 )
 
 // Domain tests: nodes and membership are in-memory fakes from clustertest,

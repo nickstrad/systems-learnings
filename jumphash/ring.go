@@ -4,7 +4,7 @@ import (
 	"errors"
 	"sync"
 
-	"github.com/nickstrad/systems-learnings/jumphash/internal/assert"
+	"github.com/nickstrad/systems-learnings/shared/assert"
 )
 
 var (

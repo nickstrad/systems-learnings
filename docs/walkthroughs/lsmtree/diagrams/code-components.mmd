@@ -1,0 +1,11 @@
+%% draw-visual: -x 4 -y 1 -p 0
+graph TD
+  CTL[cmd/lsmctl] -->|1| DB[lsmtree.DB]
+  DB -->|2| PL[compaction, meta]
+  DB -->|3| MEM[memtable, iterator]
+  DB -->|4| FMT[wal, sstable, manifest]
+  FMT -->|5| ENC[keys, codec, bloom]
+  FMT -->|6| VFS[vfs.FS (port)]
+  VFS -->|7| OS[osfs]
+  VFS -->|7| MFS[vfstest.MemFS]
+  VFS -->|7| CFS[countfs]

@@ -3,7 +3,7 @@ package cluster
 import (
 	"context"
 
-	"github.com/nickstrad/systems-learnings/jumphash/internal/assert"
+	"github.com/nickstrad/systems-learnings/shared/assert"
 )
 
 // This file defines the contracts at the domain's two integration points.

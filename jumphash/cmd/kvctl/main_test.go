@@ -15,6 +15,7 @@ import (
 
 	"github.com/nickstrad/systems-learnings/jumphash/internal/kv"
 	"github.com/nickstrad/systems-learnings/jumphash/internal/kvhttp"
+	"github.com/nickstrad/systems-learnings/shared/cli"
 )
 
 var logIDRE = regexp.MustCompile(`log ID ([0-9a-f]{8})`)
@@ -90,8 +91,8 @@ func TestBadInputIsWellFormed(t *testing.T) {
 
 func TestRawErrorIsReportedAsBug(t *testing.T) {
 	var log bytes.Buffer
-	r := reporter{logger: slog.New(slog.NewJSONHandler(&log, nil)), stderr: io.Discard, logPath: "x.log"}
-	if code := r.report(io.ErrUnexpectedEOF); code != exitBug {
+	r := cli.Reporter{Logger: slog.New(slog.NewJSONHandler(&log, nil)), Stderr: io.Discard, LogPath: "x.log", Modules: []string{module}}
+	if code := r.Report(io.ErrUnexpectedEOF); code != exitBug {
 		t.Fatalf("exit %d, want %d", code, exitBug)
 	}
 	if !strings.Contains(log.String(), `"level":"ERROR"`) || !strings.Contains(log.String(), "unexpected EOF") {

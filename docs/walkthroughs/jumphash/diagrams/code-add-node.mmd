@@ -1,0 +1,21 @@
+%% draw-visual:
+sequenceDiagram
+  autonumber
+  participant CTL as kvctl
+  participant CL as cluster
+  participant MF as memberfile
+  participant OLD as old nodes
+  participant NEW as new node
+  CTL->>CL: Open
+  CL->>MF: Load cluster.json
+  CTL->>CL: AddNode(new)
+  Note over CL: Apply(op)
+  CL->>NEW: GET /healthz
+  CL->>OLD: GET /kv (scan)
+  CL->>NEW: GET /kv (scan)
+  Note over CL: PlanMoves
+  CL->>NEW: PUT moved keys
+  CL->>NEW: DELETE clears
+  CL->>MF: Save (commit)
+  CL->>OLD: DELETE old copies
+  CL-->>CTL: Report

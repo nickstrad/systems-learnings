@@ -8,7 +8,7 @@ import (
 
 	"github.com/nickstrad/systems-learnings/jumphash/internal/cluster"
 	"github.com/nickstrad/systems-learnings/jumphash/internal/cluster/clustertest"
-	"github.com/nickstrad/systems-learnings/jumphash/internal/errs"
+	"github.com/nickstrad/systems-learnings/shared/errs"
 )
 
 func TestFileStoreContract(t *testing.T) {

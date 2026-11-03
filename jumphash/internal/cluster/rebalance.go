@@ -4,7 +4,7 @@ import (
 	"context"
 	"slices"
 
-	"github.com/nickstrad/systems-learnings/jumphash/internal/assert"
+	"github.com/nickstrad/systems-learnings/shared/assert"
 )
 
 // Report says what a membership change did.

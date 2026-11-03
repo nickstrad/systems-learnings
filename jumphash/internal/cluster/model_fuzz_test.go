@@ -12,7 +12,7 @@ import (
 	"github.com/nickstrad/systems-learnings/jumphash"
 	"github.com/nickstrad/systems-learnings/jumphash/internal/cluster"
 	"github.com/nickstrad/systems-learnings/jumphash/internal/cluster/clustertest"
-	"github.com/nickstrad/systems-learnings/jumphash/internal/errs"
+	"github.com/nickstrad/systems-learnings/shared/errs"
 )
 
 // FuzzClusterModel is a model-based (stateful) property test. It reads the

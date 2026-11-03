@@ -5,7 +5,7 @@ import (
 	"maps"
 	"slices"
 
-	"github.com/nickstrad/systems-learnings/jumphash/internal/assert"
+	"github.com/nickstrad/systems-learnings/shared/assert"
 )
 
 // Move is one key that changes owner: copy Value to To, then delete it

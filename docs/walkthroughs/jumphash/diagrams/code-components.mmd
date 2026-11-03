@@ -1,0 +1,11 @@
+%% draw-visual: -x 4 -y 1 -p 0
+graph TD
+  CTL[cmd/kvctl (adapter)] -->|1| CL[cluster (domain)]
+  CL -->|2| NI[Node (port)]
+  CL -->|2| SI[MembershipStore (port)]
+  CL -->|3| JH[jumphash (domain)]
+  NI -->|4| CLI[kvhttp.Client (adapter)]
+  SI -->|4| MF[memberfile (adapter)]
+  CLI -->|5| NODE[cmd/kvnode (adapter)]
+  NODE -->|6| SRV[kvhttp handler (adapter)]
+  SRV -->|7| KV[kv (domain)]

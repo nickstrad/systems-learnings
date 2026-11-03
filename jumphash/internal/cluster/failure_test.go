@@ -9,7 +9,7 @@ import (
 
 	"github.com/nickstrad/systems-learnings/jumphash/internal/cluster"
 	"github.com/nickstrad/systems-learnings/jumphash/internal/cluster/clustertest"
-	"github.com/nickstrad/systems-learnings/jumphash/internal/errs"
+	"github.com/nickstrad/systems-learnings/shared/errs"
 )
 
 // Failure paths: a fake node or store fails at one step, and the test checks

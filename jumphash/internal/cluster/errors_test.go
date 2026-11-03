@@ -9,7 +9,7 @@ import (
 	"github.com/nickstrad/systems-learnings/jumphash"
 	"github.com/nickstrad/systems-learnings/jumphash/internal/cluster"
 	"github.com/nickstrad/systems-learnings/jumphash/internal/cluster/clustertest"
-	"github.com/nickstrad/systems-learnings/jumphash/internal/errs"
+	"github.com/nickstrad/systems-learnings/shared/errs"
 )
 
 // The module-boundary rule: every error from a public cluster method is a

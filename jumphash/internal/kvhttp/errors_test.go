@@ -12,8 +12,8 @@ import (
 
 	"log/slog"
 
-	"github.com/nickstrad/systems-learnings/jumphash/internal/errs"
 	"github.com/nickstrad/systems-learnings/jumphash/internal/kv"
+	"github.com/nickstrad/systems-learnings/shared/errs"
 )
 
 // Every error leaving the client is a well-formed kvhttp error.

@@ -4,8 +4,8 @@ import (
 	"context"
 	"errors"
 
-	"github.com/nickstrad/systems-learnings/jumphash/internal/assert"
-	"github.com/nickstrad/systems-learnings/jumphash/internal/errs"
+	"github.com/nickstrad/systems-learnings/shared/assert"
+	"github.com/nickstrad/systems-learnings/shared/errs"
 )
 
 // Sentinels. Public methods return them wrapped in a cluster error, so

@@ -1,0 +1,21 @@
+%% draw-visual:
+sequenceDiagram
+  autonumber
+  participant U as caller
+  participant DB as DB
+  participant W as WAL
+  participant M as memtable
+  participant F as files
+  U->>DB: Put(key, value)
+  DB->>W: Append, Sync if SyncWrites
+  DB->>M: Add
+  Note over DB: Size >= MemtableSize
+  DB->>F: write L0 table, Sync
+  DB->>F: create next WAL
+  DB->>F: write MANIFEST (commit)
+  DB->>F: remove old WAL
+  Note over DB: compaction.Pick
+  DB->>F: merge inputs into new tables
+  DB->>F: write MANIFEST (commit)
+  DB->>F: remove input tables
+  DB-->>U: nil

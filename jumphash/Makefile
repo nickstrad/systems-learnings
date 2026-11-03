@@ -1,4 +1,4 @@
-.PHONY: all test race bench cover fmt vet check clean e2e demo build noassert
+.PHONY: all test race bench cover fmt vet check clean e2e demo build noassert experiments
 
 all: check
 
@@ -21,6 +21,7 @@ fmt:
 vet:
 	go vet ./...
 	go vet -tags e2e ./e2e
+	go vet -tags experiments ./experiments
 
 # Builds kvnode and kvctl into ./bin.
 build:
@@ -34,9 +35,16 @@ e2e:
 demo:
 	./scripts/demo.sh
 
+# Measures the paper's claims (experiments/, -tags experiments): CSVs to
+# results/<run>/, then the DuckDB tables in scripts/experiments.sql.
+# RUN=H1 runs only the matching experiments.
+experiments:
+	../shared/scripts/experiments.sh . "$(RUN)"
+
 # Builds and tests with assertions compiled out, to keep that build working.
 noassert:
 	go vet -tags noassert ./...
+	go vet -tags 'experiments noassert' ./experiments
 	go test -tags noassert ./...
 
 # Fails if any file needs formatting, then vets and runs tests with the race detector.

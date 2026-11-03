@@ -1,0 +1,10 @@
+%% draw-visual: -x 4 -y 1 -p 0
+graph TD
+  U[you (person)] -->|1| CTL[kvctl (CLI)]
+  CTL -->|2| N[kvnode x N (server)]
+  CTL -->|3| CJ[cluster.json]
+  CTL -->|4| LOG[kvctl.log]
+  N -->|5| ERR[stderr (logs)]
+  U -->|6| EXP[experiments]
+  EXP -->|7| RES[results/ (CSV)]
+  RES -->|8| DDB[DuckDB]

@@ -1,0 +1,9 @@
+%% draw-visual: -x 4 -y 1 -p 0
+graph TD
+  SYS[e2e tests] -->|1| BIN[kvctl + kvnode]
+  BIN -->|5| AD[adapters, realMain]
+  INT[integration] -->|2| AD
+  AD -->|5| DOM[cluster, Ring]
+  UNIT[unit + fuzz] -->|3| DOM
+  DOM -->|5| H[Hash]
+  EXP[experiments] -->|4| H

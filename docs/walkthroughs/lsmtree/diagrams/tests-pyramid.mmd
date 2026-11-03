@@ -1,0 +1,9 @@
+%% draw-visual: -x 4 -y 1 -p 0
+graph TD
+  SYS[e2e tests] -->|1| BIN[lsmctl binary]
+  BIN -->|5| AD[realMain, osfs]
+  INT[integration tests] -->|2| AD
+  AD -->|5| DB[lsmtree.DB]
+  EXP[experiments] -->|4| DB
+  DB -->|5| DOM[internal packages]
+  UNIT[unit + fuzz] -->|3| DOM

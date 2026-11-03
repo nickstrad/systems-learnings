@@ -18,10 +18,25 @@ package assert
 
 import "fmt"
 
-// That panics if cond is false. In hot paths, pass no args, so that no
-// argument slice is allocated.
+// That panics if cond is false.
+//
+// Go evaluates and boxes args before That runs, even when cond is true, so
+// a call with arguments allocates on every pass. In hot paths, guard the
+// call instead, which costs nothing when the check passes:
+//
+//	if !cond {
+//		assert.Fail("x=%d", x)
+//	}
 func That(cond bool, format string, args ...any) {
 	if Enabled && !cond {
+		Fail(format, args...)
+	}
+}
+
+// Fail panics with an assertion failure. It does nothing when assertions
+// are compiled out. Call it on the failing branch of a hot-path check.
+func Fail(format string, args ...any) {
+	if Enabled {
 		panic(fmt.Sprintf("assertion failed: "+format, args...))
 	}
 }

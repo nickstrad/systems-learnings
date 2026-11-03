@@ -1,0 +1,8 @@
+%% draw-visual: -x 4 -y 1 -p 0
+graph TD
+  W[Put / Delete] -->|1| LOG[WAL: NNNNNN.log]
+  W -->|2| C0[memtable (C0)]
+  C0 -->|3| L0[L0: tables may overlap]
+  L0 -->|4| L1[L1: disjoint, cursor]
+  L1 -->|5| L2[L2: r x L1, cursor]
+  L2 -->|6| LN[L6: last level]

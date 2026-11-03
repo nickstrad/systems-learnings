@@ -1,0 +1,8 @@
+%% draw-visual: -x 4 -y 1 -p 0
+graph TD
+  U[you (person)] -->|1| CTL[lsmctl (CLI)]
+  CTL -->|2| DIR[data/ (store dir)]
+  CTL -->|3| LOG[lsmctl.log (file)]
+  U -->|4| EXP[experiments (go test)]
+  EXP -->|5| RES[results/ (CSV, JSONL)]
+  RES -->|6| DDB[DuckDB]

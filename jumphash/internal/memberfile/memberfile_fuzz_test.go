@@ -6,7 +6,7 @@ import (
 	"slices"
 	"testing"
 
-	"github.com/nickstrad/systems-learnings/jumphash/internal/errs"
+	"github.com/nickstrad/systems-learnings/shared/errs"
 )
 
 // FuzzMemberfileLoad writes arbitrary bytes as the membership file. Load

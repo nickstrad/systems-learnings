@@ -10,8 +10,8 @@ import (
 	"strings"
 	"time"
 
-	"github.com/nickstrad/systems-learnings/jumphash/internal/assert"
-	"github.com/nickstrad/systems-learnings/jumphash/internal/errs"
+	"github.com/nickstrad/systems-learnings/shared/assert"
+	"github.com/nickstrad/systems-learnings/shared/errs"
 )
 
 // Client talks to one node over HTTP. It satisfies cluster.Node.

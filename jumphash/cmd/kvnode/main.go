@@ -21,7 +21,7 @@ import (
 
 	"github.com/nickstrad/systems-learnings/jumphash/internal/kv"
 	"github.com/nickstrad/systems-learnings/jumphash/internal/kvhttp"
-	"github.com/nickstrad/systems-learnings/jumphash/internal/logx"
+	"github.com/nickstrad/systems-learnings/shared/logx"
 )
 
 func main() {
